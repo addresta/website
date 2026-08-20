@@ -65,9 +65,24 @@ export default function Footer() {
             <Link href="/disclaimer" className="hover:text-champagne-gold">Disclaimer</Link>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" aria-label="Instagram" className="hover:text-champagne-gold">Instagram</a>
-            <a href="#" aria-label="Facebook" className="hover:text-champagne-gold">Facebook</a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-champagne-gold">LinkedIn</a>
+            <a
+              href="https://www.instagram.com/addresta/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="hover:text-champagne-gold"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61593124002182"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="hover:text-champagne-gold"
+            >
+              Facebook
+            </a>
             <a
               href="https://wa.me/917775963750"
               target="_blank"
