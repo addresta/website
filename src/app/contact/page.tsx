@@ -32,13 +32,13 @@ export default function ContactPage() {
             </h2>
             <p className="text-sm text-slate-grey">Pune, Maharashtra</p>
             <p className="mt-2 text-sm text-slate-grey">
-              <a href="tel:+911234567890" className="hover:text-rich-gold">+91 12345 67890</a>
+              <a href="tel:+917775963750" className="hover:text-rich-gold">+91 77759 63750</a>
             </p>
             <p className="mt-2 text-sm text-slate-grey">
-              <a href="mailto:hello@addresta.com" className="hover:text-rich-gold">hello@addresta.com</a>
+              <a href="mailto:info@addresta.com" className="hover:text-rich-gold">info@addresta.com</a>
             </p>
             <p className="mt-2 text-sm text-slate-grey">
-              <a href="https://wa.me/911234567890" target="_blank" rel="noopener noreferrer" className="hover:text-rich-gold">
+              <a href="https://wa.me/917775963750" target="_blank" rel="noopener noreferrer" className="hover:text-rich-gold">
                 WhatsApp Us
               </a>
             </p>

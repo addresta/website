@@ -109,7 +109,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+911234567890" className="link-underline text-sm font-medium text-charcoal hover:text-rich-gold">
+          <a href="tel:+917775963750" className="link-underline text-sm font-medium text-charcoal hover:text-rich-gold">
             Call Us
           </a>
           <Link

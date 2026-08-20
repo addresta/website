@@ -2,8 +2,8 @@
 
 import { usePathname } from "next/navigation";
 
-const PHONE_NUMBER = "+911234567890";
-const WHATSAPP_NUMBER = "911234567890";
+const PHONE_NUMBER = "+917775963750";
+const WHATSAPP_NUMBER = "917775963750";
 
 export default function MobileStickyBar() {
   const pathname = usePathname();
