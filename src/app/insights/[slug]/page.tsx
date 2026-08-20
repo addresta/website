@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BlogCard from "@/components/BlogCard";
 import CTASection from "@/components/CTASection";
+import PlaceholderArt from "@/components/PlaceholderArt";
 import { insights, getArticleBySlug } from "@/data/insights";
 
 export function generateStaticParams() {
@@ -45,9 +46,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           {article.author} &middot; {new Date(article.date).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })}
         </p>
 
-        <div className="mt-8 aspect-video rounded-[6px] border border-border-card bg-silver/20 flex items-center justify-center text-sm text-slate-grey">
-          Hero image coming soon
-        </div>
+        <PlaceholderArt label="Hero image coming soon" className="mt-8 aspect-video rounded-[6px] border border-border-card" />
 
         <div className="mt-10 prose-content text-base text-charcoal leading-relaxed space-y-4">
           {article.content.split("\n\n").map((paragraph, i) => (

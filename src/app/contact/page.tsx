@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
+import PlaceholderArt from "@/components/PlaceholderArt";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -43,9 +44,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="aspect-square rounded-[6px] border border-border-card bg-silver/20 flex items-center justify-center text-sm text-slate-grey">
-            Map coming soon
-          </div>
+          <PlaceholderArt label="Map coming soon" className="aspect-square rounded-[6px] border border-border-card" />
         </div>
       </div>
     </div>

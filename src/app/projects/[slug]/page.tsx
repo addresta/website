@@ -55,13 +55,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-[6px] bg-champagne-gold px-7 py-3.5 text-sm font-semibold text-charcoal hover:bg-rich-gold transition-colors"
+              className="inline-flex items-center rounded-[6px] bg-champagne-gold px-7 py-3.5 text-sm font-semibold text-charcoal hover:bg-rich-gold hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
             >
               Request Price
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-[6px] border border-warm-white/40 px-7 py-3.5 text-sm font-semibold text-warm-white hover:border-champagne-gold hover:text-champagne-gold transition-colors"
+              className="inline-flex items-center rounded-[6px] border border-warm-white/40 px-7 py-3.5 text-sm font-semibold text-warm-white hover:border-champagne-gold hover:text-champagne-gold hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
             >
               Schedule Site Visit
             </Link>

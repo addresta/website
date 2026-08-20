@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Property } from "@/types";
 import { locations } from "@/data/locations";
 import { developers } from "@/data/developers";
+import PlaceholderArt from "./PlaceholderArt";
 
 export default function PropertyCard({ property }: { property: Property }) {
   const location = locations.find((l) => l.slug === property.locationSlug);
@@ -11,14 +12,18 @@ export default function PropertyCard({ property }: { property: Property }) {
   return (
     <Link
       href={`/projects/${property.slug}`}
-      className="group block rounded-[6px] border border-border-card bg-pure-white overflow-hidden hover:shadow-md transition-shadow"
+      className="group block rounded-[6px] border border-border-card bg-pure-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-champagne-gold/50 hover:shadow-xl hover:shadow-charcoal/5"
     >
-      <div className="aspect-[4/3] bg-silver/20 flex items-center justify-center text-xs text-slate-grey">
+      <div className="aspect-[4/3] overflow-hidden">
         {property.images[0] ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={property.images[0]} alt={property.name} className="w-full h-full object-cover" />
+          <img
+            src={property.images[0]}
+            alt={property.name}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         ) : (
-          "Image coming soon"
+          <PlaceholderArt className="w-full h-full" />
         )}
       </div>
       <div className="p-5">
@@ -36,8 +41,9 @@ export default function PropertyCard({ property }: { property: Property }) {
           <p className="text-sm font-semibold text-charcoal">{property.priceFrom}</p>
           {developer && <p className="text-xs text-slate-grey">{developer.name}</p>}
         </div>
-        <span className="mt-4 inline-block text-sm font-medium text-rich-gold group-hover:underline">
-          View Property →
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-rich-gold">
+          View Property
+          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>
       </div>
     </Link>

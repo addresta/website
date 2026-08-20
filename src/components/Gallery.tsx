@@ -1,10 +1,8 @@
+import PlaceholderArt from "./PlaceholderArt";
+
 export default function Gallery({ images, alt }: { images: string[]; alt: string }) {
   if (!images.length) {
-    return (
-      <div className="aspect-video rounded-[6px] border border-border-card bg-silver/20 flex items-center justify-center text-sm text-slate-grey">
-        Gallery images coming soon
-      </div>
-    );
+    return <PlaceholderArt label="Gallery images coming soon" className="aspect-video rounded-[6px] border border-border-card" />;
   }
 
   return (
@@ -15,7 +13,7 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
           key={src}
           src={src}
           alt={`${alt} — image ${i + 1}`}
-          className="w-full aspect-[4/3] object-cover rounded-[6px] border border-border-card"
+          className="w-full aspect-[4/3] object-cover rounded-[6px] border border-border-card transition-transform duration-500 hover:scale-[1.03]"
         />
       ))}
     </div>

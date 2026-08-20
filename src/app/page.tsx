@@ -10,6 +10,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import TestimonialCard from "@/components/TestimonialCard";
 import BlogCard from "@/components/BlogCard";
 import CTASection from "@/components/CTASection";
+import Reveal from "@/components/Reveal";
 
 import { getFeaturedProperties } from "@/data/properties";
 import { locations } from "@/data/locations";
@@ -44,6 +45,15 @@ const PROCESS_STEPS = [
   { number: "04", title: "Decide With Confidence", description: "Move forward with informed guidance and support." },
 ];
 
+function ArrowLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link href={href} className="group inline-flex items-center gap-1.5 text-sm font-medium text-rich-gold">
+      {children}
+      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+    </Link>
+  );
+}
+
 export default function HomePage() {
   const featuredProperties = getFeaturedProperties().slice(0, 6);
   const homeLocations = locations.filter((l) => HOME_LOCATIONS.includes(l.name));
@@ -63,41 +73,50 @@ export default function HomePage() {
         primaryCta={{ label: "Explore Properties", href: "/properties" }}
         secondaryCta={{ label: "Talk to an Advisor", href: "/contact" }}
         supportingLine="Curated properties. Clear advice. Confident decisions."
+        backgroundImage="/images/villa-exterior-twilight.jpg"
       />
 
-      {/* Property Search */}
-      <section className="relative -mt-10 lg:-mt-14 z-10">
+      {/* Property Search — overlaps the hero */}
+      <section className="relative -mt-24 lg:-mt-20 z-10">
         <div className="max-w-(--container-page) mx-auto px-6">
           <p className="sr-only">Find a Property That Fits Your Future</p>
-          <PropertySearch />
+          <Reveal>
+            <PropertySearch />
+          </Reveal>
         </div>
       </section>
 
       {/* Featured Properties */}
       <section className="section-space">
         <div className="max-w-(--container-page) mx-auto px-6">
-          <SectionHeader
-            eyebrow="Featured"
-            heading="Curated Properties"
-            subheading="A handpicked selection of properties chosen for location, quality, lifestyle and long-term value."
-          />
-          <div className="mt-10">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Featured"
+              heading="Curated Properties"
+              subheading="A handpicked selection of properties chosen for location, quality, lifestyle and long-term value."
+            />
+          </Reveal>
+          <Reveal delay={100} className="mt-10">
             <PropertyGrid properties={featuredProperties} />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Why Addresta */}
       <section className="section-space bg-warm-white">
         <div className="max-w-(--container-page) mx-auto px-6">
-          <SectionHeader
-            eyebrow="Why Addresta"
-            heading="More Than Property. A Better Decision."
-            subheading="Buying a property is one of the most important financial and personal decisions you will make. At Addresta, we go beyond simply showing properties. We understand your requirements, evaluate opportunities and help you make decisions with greater confidence."
-          />
+          <Reveal>
+            <SectionHeader
+              eyebrow="Why Addresta"
+              heading="More Than Property. A Better Decision."
+              subheading="Buying a property is one of the most important financial and personal decisions you will make. At Addresta, we go beyond simply showing properties. We understand your requirements, evaluate opportunities and help you make decisions with greater confidence."
+            />
+          </Reveal>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {WHY_ADDRESTA.map((item) => (
-              <IconFeature key={item.number} {...item} />
+            {WHY_ADDRESTA.map((item, i) => (
+              <Reveal key={item.number} delay={i * 60}>
+                <IconFeature {...item} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -106,13 +125,17 @@ export default function HomePage() {
       {/* Our Expertise */}
       <section className="section-space">
         <div className="max-w-(--container-page) mx-auto px-6">
-          <SectionHeader eyebrow="Expertise" heading="Real Estate, With Perspective." />
+          <Reveal>
+            <SectionHeader eyebrow="Expertise" heading="Real Estate, With Perspective." />
+          </Reveal>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {EXPERTISE.map((item) => (
-              <div key={item.title} className="border-t-2 border-champagne-gold pt-4">
-                <h3 className="text-lg font-medium text-charcoal">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-grey leading-relaxed">{item.description}</p>
-              </div>
+            {EXPERTISE.map((item, i) => (
+              <Reveal key={item.title} delay={i * 60}>
+                <div className="group border-t-2 border-champagne-gold pt-4 transition-transform duration-300 hover:-translate-y-1">
+                  <h3 className="text-lg font-medium text-charcoal">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-grey leading-relaxed">{item.description}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -121,20 +144,22 @@ export default function HomePage() {
       {/* Locations */}
       <section className="section-space bg-warm-white">
         <div className="max-w-(--container-page) mx-auto px-6">
-          <SectionHeader
-            eyebrow="Locations"
-            heading="Explore Pune"
-            subheading="From established neighbourhoods to Pune's fastest-growing corridors, explore opportunities across the city's most sought-after locations."
-          />
+          <Reveal>
+            <SectionHeader
+              eyebrow="Locations"
+              heading="Explore Pune"
+              subheading="From established neighbourhoods to Pune's fastest-growing corridors, explore opportunities across the city's most sought-after locations."
+            />
+          </Reveal>
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {homeLocations.map((location) => (
-              <LocationCard key={location.slug} location={location} />
+            {homeLocations.map((location, i) => (
+              <Reveal key={location.slug} delay={i * 40}>
+                <LocationCard location={location} />
+              </Reveal>
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/locations" className="text-sm font-medium text-rich-gold hover:underline">
-              Explore All Locations →
-            </Link>
+            <ArrowLink href="/locations">Explore All Locations</ArrowLink>
           </div>
         </div>
       </section>
@@ -142,20 +167,22 @@ export default function HomePage() {
       {/* Developers */}
       <section className="section-space">
         <div className="max-w-(--container-page) mx-auto px-6">
-          <SectionHeader
-            eyebrow="Developers"
-            heading="Trusted Developer Network"
-            subheading="We work with established developers and carefully selected real estate opportunities across Pune."
-          />
+          <Reveal>
+            <SectionHeader
+              eyebrow="Developers"
+              heading="Trusted Developer Network"
+              subheading="We work with established developers and carefully selected real estate opportunities across Pune."
+            />
+          </Reveal>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {developers.map((developer) => (
-              <DeveloperCard key={developer.slug} developer={developer} />
+            {developers.map((developer, i) => (
+              <Reveal key={developer.slug} delay={i * 60}>
+                <DeveloperCard developer={developer} />
+              </Reveal>
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/developers" className="text-sm font-medium text-rich-gold hover:underline">
-              Explore Developers →
-            </Link>
+            <ArrowLink href="/developers">Explore Developers</ArrowLink>
           </div>
         </div>
       </section>
@@ -163,10 +190,12 @@ export default function HomePage() {
       {/* Process */}
       <section className="section-space bg-warm-white">
         <div className="max-w-(--container-page) mx-auto px-6">
-          <SectionHeader eyebrow="How It Works" heading="A Simpler Way to Find Your Property" />
-          <div className="mt-10">
+          <Reveal>
+            <SectionHeader eyebrow="How It Works" heading="A Simpler Way to Find Your Property" />
+          </Reveal>
+          <Reveal delay={100} className="mt-10">
             <ProcessSteps steps={PROCESS_STEPS} />
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -174,10 +203,14 @@ export default function HomePage() {
       {testimonials.length > 0 && (
         <section className="section-space">
           <div className="max-w-(--container-page) mx-auto px-6">
-            <SectionHeader eyebrow="Testimonials" heading="What Our Clients Say" align="center" />
+            <Reveal>
+              <SectionHeader eyebrow="Testimonials" heading="What Our Clients Say" align="center" />
+            </Reveal>
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {testimonials.map((t) => (
-                <TestimonialCard key={t.clientName} testimonial={t} />
+              {testimonials.map((t, i) => (
+                <Reveal key={t.clientName} delay={i * 80}>
+                  <TestimonialCard testimonial={t} />
+                </Reveal>
               ))}
             </div>
           </div>
@@ -187,16 +220,18 @@ export default function HomePage() {
       {/* Insights */}
       <section className="section-space bg-warm-white">
         <div className="max-w-(--container-page) mx-auto px-6">
-          <SectionHeader eyebrow="Insights" heading="Ideas, Insights & Pune Real Estate" />
+          <Reveal>
+            <SectionHeader eyebrow="Insights" heading="Ideas, Insights & Pune Real Estate" />
+          </Reveal>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {insights.slice(0, 3).map((article) => (
-              <BlogCard key={article.slug} article={article} />
+            {insights.slice(0, 3).map((article, i) => (
+              <Reveal key={article.slug} delay={i * 60}>
+                <BlogCard article={article} />
+              </Reveal>
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/insights" className="text-sm font-medium text-rich-gold hover:underline">
-              View All Insights →
-            </Link>
+            <ArrowLink href="/insights">View All Insights</ArrowLink>
           </div>
         </div>
       </section>

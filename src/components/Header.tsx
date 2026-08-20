@@ -74,12 +74,16 @@ export default function Header() {
 
   return (
     <header
-      className={`relative sticky top-0 z-50 bg-warm-white transition-shadow ${
-        scrolled ? "bg-pure-white shadow-sm border-b border-champagne-gold/30" : ""
+      className={`sticky top-0 z-50 bg-warm-white transition-[box-shadow,border-color] duration-300 ${
+        scrolled ? "bg-pure-white shadow-sm border-b border-champagne-gold/30" : "border-b border-transparent"
       }`}
       onMouseLeave={() => setOpenMenu(null)}
     >
-      <div className="max-w-(--container-page) mx-auto px-6 h-20 flex items-center justify-between">
+      <div
+        className={`max-w-(--container-page) mx-auto px-6 flex items-center justify-between transition-[height] duration-300 ${
+          scrolled ? "h-16" : "h-20"
+        }`}
+      >
         <Link href="/" className="shrink-0">
           <Image
             src="/brand/addresta-logo.png"
@@ -87,7 +91,7 @@ export default function Header() {
             width={220}
             height={72}
             priority
-            className="h-12 w-auto lg:h-14"
+            className={`w-auto transition-[height] duration-300 ${scrolled ? "h-10 lg:h-11" : "h-12 lg:h-14"}`}
           />
         </Link>
 
@@ -96,7 +100,7 @@ export default function Header() {
             <div key={item.href} onMouseEnter={() => setOpenMenu(item.menu ?? null)}>
               <Link
                 href={item.href}
-                className="text-sm font-medium text-charcoal hover:text-rich-gold transition-colors py-2"
+                className="link-underline text-sm font-medium text-charcoal hover:text-rich-gold transition-colors py-2"
               >
                 {item.label}
               </Link>
@@ -105,12 +109,12 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+911234567890" className="text-sm font-medium text-charcoal hover:text-rich-gold">
+          <a href="tel:+911234567890" className="link-underline text-sm font-medium text-charcoal hover:text-rich-gold">
             Call Us
           </a>
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-[6px] bg-charcoal px-5 py-2.5 text-sm font-semibold text-pure-white hover:bg-rich-gold transition-colors"
+            className="inline-flex items-center rounded-[6px] bg-charcoal px-5 py-2.5 text-sm font-semibold text-pure-white transition-all duration-200 hover:bg-rich-gold hover:scale-[1.03] active:scale-[0.98]"
           >
             Get in Touch
           </Link>
@@ -119,26 +123,51 @@ export default function Header() {
         <button
           type="button"
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
           className="lg:hidden p-2 -mr-2"
           onClick={() => setMobileOpen((v) => !v)}
         >
-          <span className="block w-6 h-0.5 bg-charcoal mb-1.5" />
-          <span className="block w-6 h-0.5 bg-charcoal mb-1.5" />
-          <span className="block w-6 h-0.5 bg-charcoal" />
+          <span
+            className={`block w-6 h-0.5 bg-charcoal transition-transform duration-300 ${
+              mobileOpen ? "translate-y-2 rotate-45" : "mb-1.5"
+            }`}
+          />
+          <span
+            className={`block w-6 h-0.5 bg-charcoal transition-opacity duration-200 ${
+              mobileOpen ? "opacity-0" : "mb-1.5"
+            }`}
+          />
+          <span
+            className={`block w-6 h-0.5 bg-charcoal transition-transform duration-300 ${
+              mobileOpen ? "-translate-y-2 -rotate-45" : ""
+            }`}
+          />
         </button>
       </div>
 
       {openMenu === "properties" && (
-        <MegaMenu columns={PROPERTIES_MENU} footerLink={{ label: "View All Properties", href: "/properties" }} />
+        <div className="menu-in">
+          <MegaMenu columns={PROPERTIES_MENU} footerLink={{ label: "View All Properties", href: "/properties" }} />
+        </div>
       )}
       {openMenu === "locations" && (
-        <MegaMenu columns={locationsMenu()} footerLink={{ label: "View All Locations", href: "/locations" }} />
+        <div className="menu-in">
+          <MegaMenu columns={locationsMenu()} footerLink={{ label: "View All Locations", href: "/locations" }} />
+        </div>
       )}
-      {openMenu === "services" && <MegaMenu columns={SERVICES_MENU} />}
+      {openMenu === "services" && (
+        <div className="menu-in">
+          <MegaMenu columns={SERVICES_MENU} />
+        </div>
+      )}
 
-      {mobileOpen && (
-        <div className="lg:hidden border-t border-border bg-pure-white max-h-[80vh] overflow-y-auto">
-          <nav className="px-6 py-4 flex flex-col gap-1">
+      <div
+        className={`lg:hidden grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden border-t border-border bg-pure-white">
+          <nav className="px-6 py-4 flex flex-col gap-1 max-h-[75vh] overflow-y-auto">
             <MobileNavLink href="/" onClick={() => setMobileOpen(false)}>
               Home
             </MobileNavLink>
@@ -174,7 +203,7 @@ export default function Header() {
             </Link>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }

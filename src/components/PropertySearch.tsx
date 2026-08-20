@@ -26,7 +26,7 @@ export default function PropertySearch() {
   }
 
   return (
-    <div className="rounded-[6px] border border-border-card bg-pure-white p-6 md:p-8 shadow-sm">
+    <div className="rounded-[6px] border border-pure-white/30 bg-pure-white/90 backdrop-blur-md p-6 md:p-8 shadow-2xl shadow-charcoal/20 transition-shadow duration-300 hover:shadow-charcoal/25">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <SelectField label="I'm Looking To" value={lookingTo} onChange={setLookingTo} options={["Buy", "Invest"]} />
         <SelectField
@@ -55,7 +55,7 @@ export default function PropertySearch() {
       <button
         type="button"
         onClick={handleSearch}
-        className="mt-6 w-full md:w-auto inline-flex items-center justify-center rounded-[6px] bg-charcoal px-8 py-3.5 text-sm font-semibold text-pure-white hover:bg-rich-gold transition-colors"
+        className="mt-6 w-full md:w-auto inline-flex items-center justify-center rounded-[6px] bg-charcoal px-8 py-3.5 text-sm font-semibold text-pure-white transition-all duration-200 hover:bg-rich-gold hover:scale-[1.02] active:scale-[0.98]"
       >
         Search Properties
       </button>
@@ -82,7 +82,7 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-[4px] border border-border bg-warm-white px-3 py-2.5 text-sm text-charcoal focus:outline-none focus:border-champagne-gold"
+        className="rounded-[4px] border border-border bg-warm-white px-3 py-2.5 text-sm text-charcoal transition-colors duration-200 focus:outline-none focus:border-champagne-gold"
       >
         {placeholder && <option value="">{placeholder}</option>}
         {options.map((opt) => (

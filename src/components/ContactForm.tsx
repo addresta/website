@@ -15,7 +15,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-[6px] border border-champagne-gold/40 bg-warm-white p-8 text-center">
+      <div className="animate-fade-in-up rounded-[6px] border border-champagne-gold/40 bg-warm-white p-8 text-center">
         <p className="text-lg font-medium text-charcoal">Thank you for reaching out.</p>
         <p className="mt-2 text-sm text-slate-grey">
           Our advisory team will get back to you shortly.
@@ -38,7 +38,7 @@ export default function ContactForm() {
           {INTERESTS.map((interest) => (
             <label
               key={interest}
-              className="flex items-center gap-2 rounded-[4px] border border-border px-3 py-2 text-sm text-charcoal cursor-pointer has-checked:border-champagne-gold has-checked:text-rich-gold"
+              className="flex items-center gap-2 rounded-[4px] border border-border px-3 py-2 text-sm text-charcoal cursor-pointer transition-colors duration-200 hover:border-champagne-gold/60 has-checked:border-champagne-gold has-checked:text-rich-gold has-checked:bg-champagne-gold/5"
             >
               <input type="checkbox" name="interest" value={interest} className="accent-[color:var(--color-champagne-gold)]" />
               {interest}
@@ -57,13 +57,13 @@ export default function ContactForm() {
         <textarea
           name="message"
           rows={4}
-          className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal focus:outline-none focus:border-champagne-gold"
+          className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal transition-colors duration-200 focus:outline-none focus:border-champagne-gold"
         />
       </label>
 
       <button
         type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center rounded-[6px] bg-charcoal px-8 py-3.5 text-sm font-semibold text-pure-white hover:bg-rich-gold transition-colors"
+        className="w-full sm:w-auto inline-flex items-center justify-center rounded-[6px] bg-charcoal px-8 py-3.5 text-sm font-semibold text-pure-white transition-all duration-200 hover:bg-rich-gold hover:scale-[1.02] active:scale-[0.98]"
       >
         Request a Consultation
       </button>
@@ -92,7 +92,7 @@ function Field({
         type={type}
         name={name}
         required={required}
-        className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal focus:outline-none focus:border-champagne-gold"
+        className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal transition-colors duration-200 focus:outline-none focus:border-champagne-gold"
       />
     </label>
   );

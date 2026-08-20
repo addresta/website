@@ -27,7 +27,9 @@ export const properties: Property[] = [
       "24x7 Security",
       "Children's Play Area",
     ],
-    images: [],
+    // Concept/demo photography for template preview only — swap for real, developer-approved
+    // project photography before launch.
+    images: ["/images/luxury-lounge-interior.jpg"],
     featured: true,
     description:
       "Placeholder project overview. Replace with verified, developer-approved project description before launch.",

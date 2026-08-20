@@ -107,7 +107,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
       <div className="mt-16">
         <Link
           href={`/properties?location=${encodeURIComponent(location.name)}`}
-          className="inline-flex items-center rounded-[6px] bg-charcoal px-7 py-3.5 text-sm font-semibold text-pure-white hover:bg-rich-gold transition-colors"
+          className="inline-flex items-center rounded-[6px] bg-charcoal px-7 py-3.5 text-sm font-semibold text-pure-white hover:bg-rich-gold hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
         >
           Explore Properties in {location.name}
         </Link>

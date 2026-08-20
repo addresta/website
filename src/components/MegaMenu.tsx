@@ -26,8 +26,9 @@ export default function MegaMenu({ columns, footerLink }: MegaMenuProps) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-charcoal hover:text-rich-gold transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-sm text-charcoal hover:text-rich-gold transition-colors"
                   >
+                    <span className="w-0 h-px bg-champagne-gold transition-all duration-300 group-hover:w-3" />
                     {link.label}
                   </Link>
                 </li>
@@ -41,9 +42,10 @@ export default function MegaMenu({ columns, footerLink }: MegaMenuProps) {
           <div className="max-w-(--container-page) mx-auto px-6 py-4">
             <Link
               href={footerLink.href}
-              className="text-sm font-medium text-rich-gold hover:text-champagne-gold"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-rich-gold hover:text-champagne-gold"
             >
-              {footerLink.label} →
+              {footerLink.label}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>

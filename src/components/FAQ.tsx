@@ -24,12 +24,24 @@ export default function FAQ({ items, heading = "Frequently Asked Questions" }: F
                 type="button"
                 onClick={() => setOpen(isOpen ? null : i)}
                 aria-expanded={isOpen}
-                className="w-full flex items-center justify-between gap-4 py-4 text-left"
+                className="w-full flex items-center justify-between gap-4 py-4 text-left group"
               >
-                <span className="text-sm md:text-base font-medium text-charcoal">{item.question}</span>
-                <span className="text-champagne-gold text-xl leading-none shrink-0">{isOpen ? "−" : "+"}</span>
+                <span className="text-sm md:text-base font-medium text-charcoal group-hover:text-rich-gold transition-colors">
+                  {item.question}
+                </span>
+                <span
+                  className={`text-champagne-gold text-xl leading-none shrink-0 transition-transform duration-300 ${
+                    isOpen ? "rotate-45" : ""
+                  }`}
+                >
+                  +
+                </span>
               </button>
-              {isOpen && <p className="pb-4 text-sm text-slate-grey leading-relaxed">{item.answer}</p>}
+              <div className={`accordion-panel ${isOpen ? "is-open" : ""}`}>
+                <div>
+                  <p className="pb-4 text-sm text-slate-grey leading-relaxed">{item.answer}</p>
+                </div>
+              </div>
             </div>
           );
         })}
