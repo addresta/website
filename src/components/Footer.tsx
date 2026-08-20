@@ -11,6 +11,14 @@ export default function Footer() {
             Pune-based real estate consultants helping clients discover better property
             opportunities through curated recommendations and personalized guidance.
           </p>
+          <div className="mt-5 space-y-2 text-sm">
+            <a href="tel:+917775963750" className="block text-silver hover:text-champagne-gold transition-colors">
+              +91 77759 63750
+            </a>
+            <a href="mailto:info@addresta.com" className="block text-silver hover:text-champagne-gold transition-colors">
+              info@addresta.com
+            </a>
+          </div>
         </div>
 
         <FooterColumn
@@ -60,7 +68,15 @@ export default function Footer() {
             <a href="#" aria-label="Instagram" className="hover:text-champagne-gold">Instagram</a>
             <a href="#" aria-label="Facebook" className="hover:text-champagne-gold">Facebook</a>
             <a href="#" aria-label="LinkedIn" className="hover:text-champagne-gold">LinkedIn</a>
-            <a href="#" aria-label="WhatsApp" className="hover:text-champagne-gold">WhatsApp</a>
+            <a
+              href="https://wa.me/917775963750"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="hover:text-champagne-gold"
+            >
+              WhatsApp
+            </a>
           </div>
         </div>
       </div>
