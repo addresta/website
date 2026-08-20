@@ -77,9 +77,14 @@ export const properties: Property[] = [
       "Multipurpose Lawn",
       "Surface Car Parking",
     ],
-    // Sourced from the developer's project microsite — replace with licensed listing
-    // photography before launch; do not attribute unrelated stock/AI imagery to this project.
-    images: [],
+    // Sourced from the developer's project microsite (new-properties-launch.com) — Addresta
+    // channel-partner authorized. These are the developer's artist's-impression renders, not
+    // photos of a completed building.
+    images: [
+      "/images/life-republic-canvas/tower-exterior-dusk.jpg",
+      "/images/life-republic-canvas/entrance-gate.jpg",
+      "/images/life-republic-canvas/amenity-deck-aerial.jpg",
+    ],
     featured: true,
     description:
       "Life Republic Canvas is a residential tower development by Kolte Patil in Hinjewadi, Pune, part of the larger Life Republic township. Towers rise to around 400 ft with wide private decks and panoramic views, set on a 6+ acre plot with an extensive amenity list spanning sport, leisure and family-focused spaces.",
@@ -134,9 +139,16 @@ export const properties: Property[] = [
       "Sports Court",
       "Parking",
     ],
-    // Sourced from the developer's project microsite — replace with licensed listing
-    // photography before launch; do not attribute unrelated stock/AI imagery to this project.
-    images: [],
+    // Sourced from the developer's project microsite (shapoorjivyomora-hinjewadi.com) —
+    // Addresta channel-partner authorized. These are the developer's artist's-impression
+    // renders, not photos of a completed building.
+    images: [
+      "/images/vyomora/tower-exterior.webp",
+      "/images/vyomora/interior-living-dining.webp",
+      "/images/vyomora/pool-aerial.webp",
+      "/images/vyomora/garden-swings.webp",
+      "/images/vyomora/towers-cluster.webp",
+    ],
     featured: true,
     description:
       "Vyomora is a low-density residential development by Shapoorji Pallonji on the banks of the Mula River in Hinjewadi, Pune. The 5-acre site holds only five towers, keeping a large share of the land as open, green space, with a clubhouse and sunken garden overlooking the river.",
