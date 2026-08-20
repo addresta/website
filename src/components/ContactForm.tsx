@@ -1,0 +1,99 @@
+"use client";
+
+import { useState } from "react";
+
+const INTERESTS = ["Residential", "Commercial", "Investment", "Luxury", "Selling"];
+
+export default function ContactForm() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    // TODO: wire up to CRM / email endpoint once backend integration is decided.
+    setSubmitted(true);
+  }
+
+  if (submitted) {
+    return (
+      <div className="rounded-[6px] border border-champagne-gold/40 bg-warm-white p-8 text-center">
+        <p className="text-lg font-medium text-charcoal">Thank you for reaching out.</p>
+        <p className="mt-2 text-sm text-slate-grey">
+          Our advisory team will get back to you shortly.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <Field label="Full Name" name="name" required />
+        <Field label="Phone Number" name="phone" type="tel" required />
+      </div>
+      <Field label="Email" name="email" type="email" required />
+
+      <fieldset>
+        <legend className="text-xs font-medium text-slate-grey mb-2">Interested In</legend>
+        <div className="flex flex-wrap gap-2">
+          {INTERESTS.map((interest) => (
+            <label
+              key={interest}
+              className="flex items-center gap-2 rounded-[4px] border border-border px-3 py-2 text-sm text-charcoal cursor-pointer has-checked:border-champagne-gold has-checked:text-rich-gold"
+            >
+              <input type="checkbox" name="interest" value={interest} className="accent-[color:var(--color-champagne-gold)]" />
+              {interest}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <Field label="Preferred Location" name="location" />
+        <Field label="Budget" name="budget" />
+      </div>
+
+      <label className="flex flex-col gap-1.5">
+        <span className="text-xs font-medium text-slate-grey">Message</span>
+        <textarea
+          name="message"
+          rows={4}
+          className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal focus:outline-none focus:border-champagne-gold"
+        />
+      </label>
+
+      <button
+        type="submit"
+        className="w-full sm:w-auto inline-flex items-center justify-center rounded-[6px] bg-charcoal px-8 py-3.5 text-sm font-semibold text-pure-white hover:bg-rich-gold transition-colors"
+      >
+        Request a Consultation
+      </button>
+    </form>
+  );
+}
+
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="flex flex-col gap-1.5">
+      <span className="text-xs font-medium text-slate-grey">
+        {label}
+        {required && <span className="text-deep-burgundy"> *</span>}
+      </span>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal focus:outline-none focus:border-champagne-gold"
+      />
+    </label>
+  );
+}

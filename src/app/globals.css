@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand colour system */
+  --color-champagne-gold: #c9973e;
+  --color-rich-gold: #a87520;
+  --color-charcoal: #171717;
+  --color-slate-grey: #666666;
+  --color-silver: #b8b8b8;
+  --color-warm-white: #faf9f6;
+  --color-pure-white: #ffffff;
+  --color-deep-burgundy: #7a1717;
+
+  --color-border: #e4ded3;
+  --color-border-card: #e7e1d7;
+
+  --background: var(--color-warm-white);
+  --foreground: var(--color-charcoal);
 }
 
 @theme inline {
+  --color-champagne-gold: var(--color-champagne-gold);
+  --color-rich-gold: var(--color-rich-gold);
+  --color-charcoal: var(--color-charcoal);
+  --color-slate-grey: var(--color-slate-grey);
+  --color-silver: var(--color-silver);
+  --color-warm-white: var(--color-warm-white);
+  --color-pure-white: var(--color-pure-white);
+  --color-deep-burgundy: var(--color-deep-burgundy);
+  --color-border: var(--color-border);
+  --color-border-card: var(--color-border-card);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-heading: var(--font-cormorant), "Playfair Display", "Cinzel", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --container-page: 1280px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Typography weight system — Cormorant Garamond headings, Inter for everything else.
+   H1/H2 600, H3 500, body 400. Tailwind font-weight utilities on individual elements
+   take precedence over these defaults. */
+h1, h2 {
+  font-weight: 600;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+.section-space {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+@media (min-width: 1024px) {
+  .section-space {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
 }
