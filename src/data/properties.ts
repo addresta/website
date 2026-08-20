@@ -80,7 +80,7 @@ export const properties: Property[] = [
     // Sourced from the developer's project microsite — replace with licensed listing
     // photography before launch; do not attribute unrelated stock/AI imagery to this project.
     images: [],
-    featured: false,
+    featured: true,
     description:
       "Life Republic Canvas is a residential tower development by Kolte Patil in Hinjewadi, Pune, part of the larger Life Republic township. Towers rise to around 400 ft with wide private decks and panoramic views, set on a 6+ acre plot with an extensive amenity list spanning sport, leisure and family-focused spaces.",
     highlights: [
@@ -137,7 +137,7 @@ export const properties: Property[] = [
     // Sourced from the developer's project microsite — replace with licensed listing
     // photography before launch; do not attribute unrelated stock/AI imagery to this project.
     images: [],
-    featured: false,
+    featured: true,
     description:
       "Vyomora is a low-density residential development by Shapoorji Pallonji on the banks of the Mula River in Hinjewadi, Pune. The 5-acre site holds only five towers, keeping a large share of the land as open, green space, with a clubhouse and sunken garden overlooking the river.",
     highlights: [
