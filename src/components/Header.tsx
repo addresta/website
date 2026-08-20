@@ -124,22 +124,22 @@ export default function Header() {
           type="button"
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
-          className="lg:hidden p-2 -mr-2"
+          className="lg:hidden relative w-6 h-4 shrink-0"
           onClick={() => setMobileOpen((v) => !v)}
         >
           <span
-            className={`block w-6 h-0.5 bg-charcoal transition-transform duration-300 ${
-              mobileOpen ? "translate-y-2 rotate-45" : "mb-1.5"
+            className={`absolute left-0 w-6 h-0.5 bg-charcoal transition-[top,transform] duration-300 ${
+              mobileOpen ? "top-[7px] rotate-45" : "top-0 rotate-0"
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-charcoal transition-opacity duration-200 ${
-              mobileOpen ? "opacity-0" : "mb-1.5"
+            className={`absolute left-0 top-[7px] w-6 h-0.5 bg-charcoal transition-opacity duration-200 ${
+              mobileOpen ? "opacity-0" : "opacity-100"
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-charcoal transition-transform duration-300 ${
-              mobileOpen ? "-translate-y-2 -rotate-45" : ""
+            className={`absolute left-0 w-6 h-0.5 bg-charcoal transition-[top,transform] duration-300 ${
+              mobileOpen ? "top-[7px] -rotate-45" : "top-[14px] rotate-0"
             }`}
           />
         </button>
