@@ -100,9 +100,21 @@ export default function Header() {
             <div key={item.href} onMouseEnter={() => setOpenMenu(item.menu ?? null)}>
               <Link
                 href={item.href}
-                className="link-underline text-sm font-medium text-charcoal hover:text-rich-gold transition-colors py-2"
+                className="link-underline inline-flex items-center gap-1 text-sm font-medium text-charcoal hover:text-rich-gold transition-colors py-2"
               >
                 {item.label}
+                {item.menu && (
+                  <svg
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    className={`w-3 h-3 transition-transform duration-200 ${
+                      openMenu === item.menu ? "rotate-180" : ""
+                    }`}
+                    aria-hidden
+                  >
+                    <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
               </Link>
             </div>
           ))}
