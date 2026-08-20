@@ -12,7 +12,7 @@ export default function PropertyCard({ property }: { property: Property }) {
   return (
     <Link
       href={`/projects/${property.slug}`}
-      className="group block rounded-[6px] border border-border-card bg-pure-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-champagne-gold/50 hover:shadow-xl hover:shadow-charcoal/5"
+      className="group flex h-full flex-col rounded-[6px] border border-border-card bg-pure-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-champagne-gold/50 hover:shadow-xl hover:shadow-charcoal/5"
     >
       <div className="aspect-[4/3] overflow-hidden">
         {property.images[0] ? (
@@ -26,7 +26,7 @@ export default function PropertyCard({ property }: { property: Property }) {
           <PlaceholderArt className="w-full h-full" />
         )}
       </div>
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
         <span className="inline-block text-[11px] font-semibold uppercase tracking-wider text-rich-gold border border-champagne-gold/40 rounded-[4px] px-2 py-0.5 mb-3">
           {property.status}
         </span>
@@ -41,7 +41,7 @@ export default function PropertyCard({ property }: { property: Property }) {
           <p className="text-sm font-semibold text-charcoal">{property.priceFrom}</p>
           {developer && <p className="text-xs text-slate-grey">{developer.name}</p>}
         </div>
-        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-rich-gold">
+        <span className="mt-auto pt-4 inline-flex items-center gap-1.5 text-sm font-medium text-rich-gold">
           View Property
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>
