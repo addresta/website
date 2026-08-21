@@ -17,7 +17,7 @@ export const developers: Developer[] = [
     slug: "kolte-patil-developers",
     description:
       "A listed Pune-based developer with a large-scale township portfolio, including the Life Republic development in Hinjewadi.",
-    projectCount: 1,
+    projectCount: 3,
     keyStrengths: ["Large-Format Townships", "Established Track Record", "Amenity-Led Design"],
     locations: ["Hinjewadi"],
   },

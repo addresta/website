@@ -172,6 +172,129 @@ export const properties: Property[] = [
       },
     ],
   },
+  {
+    name: "Qrious Phase 2",
+    slug: "qrious-phase-2",
+    developerSlug: "kolte-patil-developers",
+    locationSlug: "hinjewadi",
+    city: "Pune",
+    propertyType: "Residential",
+    status: "New Launch",
+    configurations: [
+      { type: "2 BHK", area: "~770 - 780 sq.ft carpet", price: "Price on Request" },
+      { type: "2 BHK Large", area: "~1005 - 1011 sq.ft carpet", price: "Price on Request" },
+      { type: "3 BHK", area: "~1005 - 1131 sq.ft carpet", price: "Price on Request" },
+    ],
+    priceFrom: "Price on Request",
+    possession: "To be announced",
+    amenities: [
+      "The Q Club (~19,000 Sq.ft. Clubhouse)",
+      "Swimming Pool",
+      "Cabana",
+      "Kids' Play Area",
+      "Pet Park",
+      "Multipurpose Lawn",
+      "Fruit Orchard",
+      "Butterfly Garden",
+      "Jogging Track",
+      "Basketball Court",
+      "Futsal Court",
+      "Cricket Practice Net",
+      "Skating Rink",
+    ],
+    // Sourced from the developer's own project flipchart brochure — Addresta channel-partner
+    // authorized. These are the developer's artist's-impression renders, not photos of a
+    // completed building.
+    images: [
+      "/images/qrious-phase-2/the-q-club.jpg",
+      "/images/qrious-phase-2/swimming-pool.jpg",
+      "/images/qrious-phase-2/cabana.jpg",
+    ],
+    featured: true,
+    description:
+      "Qrious Phase 2 is a residential launch by Kolte Patil at Life Republic, near Hinjewadi, Pune. The launch spans 3 towers of 36 habitable floors each, built around a roughly 19,000 sq.ft. clubhouse (The Q Club) and 40+ amenities across landscaped grounds and podium-level outdoor spaces.",
+    highlights: [
+      "Part of the Life Republic Township",
+      "3 Towers, 36 Habitable Floors",
+      "~19,000 Sq.ft. Clubhouse",
+      "40+ Amenities",
+      "Trusted Developer",
+    ],
+    faqs: [
+      {
+        question: "What configurations are available?",
+        answer: "2 BHK and 3 BHK residences are available, including Large and Luxurious variants with private terraces.",
+      },
+      {
+        question: "What is the starting price?",
+        answer: "Pricing is available on request from our advisory team.",
+      },
+      {
+        question: "What is the possession timeline?",
+        answer: "Possession has not yet been announced by the developer — contact our advisors for the latest update.",
+      },
+      {
+        question: "Where is the project located?",
+        answer: "The project is located at Life Republic, near Hinjewadi, Pune.",
+      },
+    ],
+  },
+  {
+    name: "Echoes",
+    slug: "echoes",
+    developerSlug: "kolte-patil-developers",
+    locationSlug: "hinjewadi",
+    city: "Pune",
+    propertyType: "Residential",
+    status: "New Launch",
+    configurations: [
+      { type: "2 BHK", area: "Details on request", price: "Price on Request" },
+      { type: "2.5 BHK", area: "Details on request", price: "Price on Request" },
+    ],
+    priceFrom: "Price on Request",
+    possession: "To be announced",
+    amenities: [
+      "Lap Pool",
+      "Outdoor Kids' Play Area",
+      "40+ Amenities Across 3 Levels",
+      "Landscaped Podium Gardens",
+    ],
+    // Sourced from the developer's own project brochure — Addresta channel-partner
+    // authorized. These are the developer's artist's-impression renders, not photos of a
+    // completed building.
+    images: [
+      "/images/echoes/tower-exterior.jpg",
+      "/images/echoes/lap-pool.jpg",
+      "/images/echoes/kids-play-area.jpg",
+      "/images/echoes/living-room.jpg",
+    ],
+    featured: true,
+    description:
+      "Echoes is a 2 & 2.5 BHK residential launch by Kolte Patil at Life Republic, Hinjewadi-Marunji-Kasarsai Road, Pune, spread across roughly 5.89 acres with Towers A, B and E. The launch offers 40+ amenities across three levels, as part of the larger 400+ acre Life Republic township.",
+    highlights: [
+      "Part of the Life Republic Township",
+      "~5.89 Acres, Towers A, B & E",
+      "40+ Amenities Across 3 Levels",
+      "Part of 400+ Acre Township",
+      "Trusted Developer",
+    ],
+    faqs: [
+      { question: "What configurations are available?", answer: "2 BHK and 2.5 BHK homes are available." },
+      {
+        question: "What is the starting price?",
+        answer: "Pricing is available on request from our advisory team.",
+      },
+      {
+        question: "What is the possession timeline?",
+        answer: "Possession has not yet been announced by the developer — contact our advisors for the latest update.",
+      },
+      {
+        question: "Where is the project located?",
+        answer:
+          "The project is located at Life Republic, Hinjawadi-Marunji-Kasarsai Road, Taluka Mulshi, Pune - 411057.",
+      },
+    ],
+  },
 ];
 
 export const getFeaturedProperties = () => properties.filter((p) => p.featured);
