@@ -5,12 +5,18 @@ import { useSearchParams } from "next/navigation";
 
 const INTERESTS = ["Residential", "Commercial", "Investment", "Luxury", "Selling"];
 
+// Public Web3Forms access key for addrestareality@gmail.com — safe to expose client-side
+// per Web3Forms' own docs (it only authorizes submissions, not reads).
+const WEB3FORMS_ACCESS_KEY = "7dd6a975-5539-4051-a620-ea85e08286ae";
+
+type Status = "idle" | "submitting" | "success" | "error";
+
 export default function ContactForm() {
   const searchParams = useSearchParams();
   const project = searchParams.get("project") ?? "";
   const intent = searchParams.get("intent");
 
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState(() => {
     if (!project) return "";
     if (intent === "visit") return `I'd like to schedule a site visit for ${project}.`;
@@ -18,13 +24,40 @@ export default function ContactForm() {
     return `I'm interested in ${project}.`;
   });
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: wire up to CRM / email endpoint once backend integration is decided.
-    setSubmitted(true);
+    setStatus("submitting");
+
+    const formData = new FormData(e.currentTarget);
+    const interests = formData.getAll("interest");
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: project ? `New Addresta Enquiry — ${project}` : "New Addresta Enquiry",
+      from_name: "Addresta Website",
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      property: formData.get("property") || "Not specified",
+      interested_in: interests.length ? interests.join(", ") : "Not specified",
+      preferred_location: formData.get("location") || "Not specified",
+      budget: formData.get("budget") || "Not specified",
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+      setStatus(result.success ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="animate-fade-in-up rounded-[6px] border border-champagne-gold/40 bg-warm-white p-8 text-center">
         <p className="text-lg font-medium text-charcoal">Thank you for reaching out.</p>
@@ -76,11 +109,18 @@ export default function ContactForm() {
         />
       </label>
 
+      {status === "error" && (
+        <p className="text-sm text-deep-burgundy">
+          Something went wrong sending your message. Please try again, or reach us directly via WhatsApp or phone.
+        </p>
+      )}
+
       <button
         type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center rounded-[6px] bg-charcoal px-8 py-3.5 text-sm font-semibold text-pure-white transition-all duration-200 hover:bg-rich-gold hover:scale-[1.02] active:scale-[0.98]"
+        disabled={status === "submitting"}
+        className="w-full sm:w-auto inline-flex items-center justify-center rounded-[6px] bg-charcoal px-8 py-3.5 text-sm font-semibold text-pure-white transition-all duration-200 hover:bg-rich-gold hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
       >
-        Request a Consultation
+        {status === "submitting" ? "Sending…" : "Request a Consultation"}
       </button>
     </form>
   );
