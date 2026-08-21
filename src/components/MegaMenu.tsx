@@ -17,7 +17,7 @@ export default function MegaMenu({ columns, footerLink }: MegaMenuProps) {
     <div className="absolute left-0 top-full w-full border-t border-border bg-pure-white shadow-lg">
       <div className="max-w-(--container-page) mx-auto px-6 py-8">
         <div
-          className="grid gap-8"
+          className="grid justify-center gap-8 md:gap-16"
           style={{ gridTemplateColumns: `repeat(${columnCount}, minmax(180px, 240px))` }}
         >
           {columns.map((col) => (
