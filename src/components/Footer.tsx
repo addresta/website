@@ -12,8 +12,8 @@ export default function Footer() {
             opportunities through curated recommendations and personalized guidance.
           </p>
           <div className="mt-5 space-y-2 text-sm">
-            <a href="tel:+917775963750" className="block text-silver hover:text-champagne-gold transition-colors">
-              +91 77759 63750
+            <a href="tel:+917775963754" className="block text-silver hover:text-champagne-gold transition-colors">
+              +91 77759 63754
             </a>
             <a href="mailto:info@addresta.com" className="block text-silver hover:text-champagne-gold transition-colors">
               info@addresta.com
@@ -84,7 +84,7 @@ export default function Footer() {
               Facebook
             </a>
             <a
-              href="https://wa.me/917775963750"
+              href="https://wa.me/917775963754"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"

@@ -241,7 +241,7 @@ export default function HomePage() {
         heading="Your Next Address Starts Here."
         body="Tell us what you're looking for and our team will help you explore the right opportunities."
         primaryCta={{ label: "Get in Touch", href: "/contact" }}
-        secondaryCta={{ label: "WhatsApp Us", href: "https://wa.me/917775963750" }}
+        secondaryCta={{ label: "WhatsApp Us", href: "https://wa.me/917775963754" }}
       />
     </>
   );
