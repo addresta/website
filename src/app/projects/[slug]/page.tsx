@@ -105,8 +105,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <CTASection
         heading="Interested in this property?"
         body="Talk to our property advisors for pricing, availability and site visit assistance."
-        primaryCta={{ label: "Request Details", href: "/contact" }}
-        secondaryCta={{ label: "Schedule Site Visit", href: "/contact" }}
+        primaryCta={{ label: "Request Details", href: `/contact?project=${encodeURIComponent(property.name)}&intent=price` }}
+        secondaryCta={{ label: "Schedule Site Visit", href: `/contact?project=${encodeURIComponent(property.name)}&intent=visit` }}
       />
     </div>
   );

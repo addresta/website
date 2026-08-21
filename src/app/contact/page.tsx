@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
-import PlaceholderArt from "@/components/PlaceholderArt";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -22,29 +22,27 @@ export default function ContactPage() {
 
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
-          <ContactForm />
+          <Suspense fallback={null}>
+            <ContactForm />
+          </Suspense>
         </div>
 
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-champagne-gold mb-3">
-              Contact Information
-            </h2>
-            <p className="text-sm text-slate-grey">Pune, Maharashtra</p>
-            <p className="mt-2 text-sm text-slate-grey">
-              <a href="tel:+917775963750" className="hover:text-rich-gold">+91 77759 63750</a>
-            </p>
-            <p className="mt-2 text-sm text-slate-grey">
-              <a href="mailto:info@addresta.com" className="hover:text-rich-gold">info@addresta.com</a>
-            </p>
-            <p className="mt-2 text-sm text-slate-grey">
-              <a href="https://wa.me/917775963750" target="_blank" rel="noopener noreferrer" className="hover:text-rich-gold">
-                WhatsApp Us
-              </a>
-            </p>
-          </div>
-
-          <PlaceholderArt label="Map coming soon" className="aspect-square rounded-[6px] border border-border-card" />
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-champagne-gold mb-3">
+            Contact Information
+          </h2>
+          <p className="text-sm text-slate-grey">Pune, Maharashtra</p>
+          <p className="mt-2 text-sm text-slate-grey">
+            <a href="tel:+917775963750" className="hover:text-rich-gold">+91 77759 63750</a>
+          </p>
+          <p className="mt-2 text-sm text-slate-grey">
+            <a href="mailto:info@addresta.com" className="hover:text-rich-gold">info@addresta.com</a>
+          </p>
+          <p className="mt-2 text-sm text-slate-grey">
+            <a href="https://wa.me/917775963750" target="_blank" rel="noopener noreferrer" className="hover:text-rich-gold">
+              WhatsApp Us
+            </a>
+          </p>
         </div>
       </div>
     </div>

@@ -1,11 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const INTERESTS = ["Residential", "Commercial", "Investment", "Luxury", "Selling"];
 
 export default function ContactForm() {
+  const searchParams = useSearchParams();
+  const project = searchParams.get("project") ?? "";
+  const intent = searchParams.get("intent");
+
   const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState(() => {
+    if (!project) return "";
+    if (intent === "visit") return `I'd like to schedule a site visit for ${project}.`;
+    if (intent === "price") return `I'd like pricing and availability details for ${project}.`;
+    return `I'm interested in ${project}.`;
+  });
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -32,6 +43,8 @@ export default function ContactForm() {
       </div>
       <Field label="Email" name="email" type="email" required />
 
+      {project && <Field label="Property" name="property" defaultValue={project} />}
+
       <fieldset>
         <legend className="text-xs font-medium text-slate-grey mb-2">Interested In</legend>
         <div className="flex flex-wrap gap-2">
@@ -57,6 +70,8 @@ export default function ContactForm() {
         <textarea
           name="message"
           rows={4}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal transition-colors duration-200 focus:outline-none focus:border-champagne-gold"
         />
       </label>
@@ -76,11 +91,13 @@ function Field({
   name,
   type = "text",
   required,
+  defaultValue,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  defaultValue?: string;
 }) {
   return (
     <label className="flex flex-col gap-1.5">
@@ -92,6 +109,7 @@ function Field({
         type={type}
         name={name}
         required={required}
+        defaultValue={defaultValue}
         className="rounded-[4px] border border-border bg-pure-white px-3 py-2.5 text-sm text-charcoal transition-colors duration-200 focus:outline-none focus:border-champagne-gold"
       />
     </label>

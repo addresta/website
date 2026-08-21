@@ -2,6 +2,9 @@ import Link from "next/link";
 import { Property } from "@/types";
 
 export default function ProjectInquiryCard({ property }: { property: Property }) {
+  const contactHref = (intent: "price" | "visit") =>
+    `/contact?project=${encodeURIComponent(property.name)}&intent=${intent}`;
+
   return (
     <div className="sticky top-24 rounded-[8px] border border-border-card bg-pure-white p-6 shadow-xl shadow-charcoal/5">
       <p className="text-xs font-semibold uppercase tracking-wider text-rich-gold">{property.status}</p>
@@ -18,13 +21,13 @@ export default function ProjectInquiryCard({ property }: { property: Property })
 
       <div className="mt-5 flex flex-col gap-3">
         <Link
-          href="/contact"
+          href={contactHref("price")}
           className="inline-flex items-center justify-center rounded-[6px] bg-champagne-gold px-6 py-3.5 text-sm font-semibold text-charcoal transition-all duration-200 hover:bg-rich-gold hover:scale-[1.02] active:scale-[0.98]"
         >
           Request Price
         </Link>
         <Link
-          href="/contact"
+          href={contactHref("visit")}
           className="inline-flex items-center justify-center rounded-[6px] border border-charcoal px-6 py-3.5 text-sm font-semibold text-charcoal transition-all duration-200 hover:border-champagne-gold hover:text-rich-gold hover:scale-[1.02] active:scale-[0.98]"
         >
           Schedule Site Visit
